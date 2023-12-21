@@ -1,0 +1,19 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+}
+
+.wrapper>p{
+    width: 810px;
+    height: 70px;
+    font-family: 'Montserrat',sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 29px;
+    letter-spacing: 0;
+    text-align: center;
+    margin-bottom: 37px;
+}
