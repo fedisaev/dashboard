@@ -1,10 +1,10 @@
 import {useMemo} from "react";
-import {Card} from "../types/dashboardTypes";
+import {Test} from "../types/dashboardTypes";
 
-export const useSortedCards = <T extends keyof Card>(
-    cards: Card[],
+export const useSortedTests = <T extends keyof Test>(
+    cards: Test[],
     sort: T | ''
-): Card[] => {
+): Test[] => {
     return useMemo(() => {
         if (sort) {
             return [...cards].sort((a, b) => {
@@ -17,16 +17,16 @@ export const useSortedCards = <T extends keyof Card>(
     }, [sort, cards]);
 };
 
-export const useCards = (
-    cards: Card[],
-    sort: keyof Card | '',
+export const useTests = (
+    cards: Test[],
+    sort: keyof Test | '',
     query: string
-): Card[] => {
-    const sortedCards = useSortedCards(cards, sort);
+): Test[] => {
+    const sortedTests = useSortedTests(cards, sort);
 
     return useMemo(() => {
-        return sortedCards.filter(
-            (card) => card.name.toLowerCase().includes(query.toLowerCase())
+        return sortedTests.filter(
+            (test) => test.name.toLowerCase().includes(query.toLowerCase())
         );
-    }, [query, sortedCards]);
+    }, [query, sortedTests]);
 };

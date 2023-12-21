@@ -1,19 +1,11 @@
-import React from 'react';
-import Header from "../components/header/Header";
-import ArrowBack from "../components/arrowBack/ArrowBack";
+import React, {FC} from 'react';
+import TestPages from "../testPages/TestPages";
+import {titleResults} from "../../constants/routesConstants";
 
-const Results = () => {
+const Results: FC = () => {
     return (
-        <div className='wrapper'>
-            <div className='div'>
-                <Header title={'Results'}/>
-                <h2>Order basket redesing</h2>
-                <div>
-                    <ArrowBack/>
-                </div>
-            </div>
-        </div>
-    );
-};
+        <TestPages title={titleResults}/>
+    )
+}
 
 export default Results;

@@ -1,86 +1,57 @@
-import React, {ChangeEvent, FC, useEffect, useState} from 'react';
-import {useCards} from "../hooks/useCards";
-import {useFetching} from "../hooks/useFetching";
+import React, {FC, useContext, useEffect} from 'react';
+import styles from '../Pages.module.css';
 import axios from "axios";
-import Header from "../components/header/Header";
-import MyInput from "../components/UI/input/MyInput";
-import CardList from "../components/cardList/CardList";
-import chevron from '../images/Chevron.png';
-
-export enum Type {
-    CLASSIC = "CLASSIC",
-    SERVER_SIDE = "SERVER_SIDE",
-    MVT = "MVT"
-}
-
-export enum Status {
-    DRAFT = "DRAFT",
-    ONLINE = "ONLINE",
-    PAUSED = "PAUSED",
-    STOPPED = "STOPPED",
-}
-
-export interface Card {
-    id: number
-    name: string
-    type: Type
-    status: Status
-    siteId: number
-}
-
-export interface Site {
-    id: number
-    url: string
-}
+import {useTests} from "../../hooks/useTests";
+import {useFetching} from "../../hooks/useFetching";
+import Header from "../../components/header/Header";
+import MyInput from "../../components/UI/input/MyInput";
+import TestList from "../../components/testList/TestList";
+import NoTests from "../../components/noTests/NoTests";
+import {TestsContext} from "../../context/testsContext";
+import {Site, Test} from "../../types/dashboardTypes";
+import {titleDashboard, urlSites, urlTests} from "../../constants/routesConstants";
 
 const Dashboard: FC = () => {
-    const [cards, setCards] = useState<Card[]>([]);
-    const [sites, setSites] = useState<Site[]>([]);
-    const [selectedSort, setSelectedSort] = useState<keyof Card | ''>('');
-    const [searchQuery, setSearchQuery] = useState<string>('');
-    const sortedAndSearchedCards = useCards(cards, selectedSort, searchQuery);
 
-    const [fetchCards, loading, error] = useFetching(async () => {
-        const responseSites = await axios.get<Site[]>('http://localhost:3100/sites');
+    const {
+        tests,
+        setTests,
+        setSites,
+        selectedSort,
+        searchQuery,
+    } = useContext(TestsContext)!;
+
+    const sortedAndSearchedTests = useTests(tests, selectedSort, searchQuery);
+
+    const [fetchTests, loading, error] = useFetching(async () => {
+        const responseSites = await axios.get<Site[]>(urlSites);
         setSites(responseSites.data);
-        const responseTests = await axios.get<Card[]>('http://localhost:3100/tests');
-        setCards(responseTests.data);
+        const responseTests = await axios.get<Test[]>(urlTests);
+        setTests(responseTests.data);
     })
 
-    const sortCards = (field: keyof Card) => {
-        setSelectedSort(field);
-    };
-
-
     useEffect(() => {
-        fetchCards()
+        fetchTests()
     }, [])
 
     return (
-        <div className='wrapper'>
-            <div className='div'>
-                <Header title={'Dashboard'}/>
+        <div className={'wrapper'}>
+            <div className={'div'}>
+                <Header title={titleDashboard}/>
                 <MyInput value={searchQuery}
-                         onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
-                         cardsLength={sortedAndSearchedCards.length}
+                         testsLength={sortedAndSearchedTests.length}
                 />
                 {error &&
-                    <div style={{marginTop: 50, color: 'red', fontSize: 25}}>
+                    <div className={styles.error}>
                         An error occurred
                     </div>}
                 {loading
-                    ? <div style={{marginTop: 50, fontSize: 25}}>
+                    ? <div className={styles.loading}>
                         Loading.....
                     </div>
-                    : <CardList cards={sortedAndSearchedCards}
-                                sortCards={sortCards}
-                                sites={sites}
-                                li={[
-                                    {value: 'name', content: 'NAME'},
-                                    {value: 'type', content: 'TYPE', image: chevron},
-                                    {value: 'status', content: 'STATUS'},
-                                    {value: 'siteId', content: `SITE`},
-                                ]}/>
+                    : sortedAndSearchedTests.length === 0
+                        ? <NoTests/>
+                        : <TestList sortedAndSearchedTests={sortedAndSearchedTests}/>
                 }
             </div>
         </div>

@@ -1,4 +1,4 @@
-.card {
+.test {
     margin: 5px 5px 5px 0;
     width: 954px;
     height: 70px;
@@ -16,17 +16,17 @@
     background: #ffffff;
 }
 
-.card:hover{
+.test:hover{
     box-shadow: 0 0 20px 0 #00000026;
     cursor: pointer;
 }
 
-.card__name {
+.test__name {
     width: 389px;
     color: #474747;
 }
 
-.card__type {
+.test__type {
     width: 100px;
     font-size: 12px;
     font-weight: 400;
@@ -34,14 +34,14 @@
     color: #5C5C5C;
 }
 
-.card__status {
+.test__status {
     width: 62px;
     font-size: 12px;
     line-height: 14px;
     color: #1BDA9D;
 }
 
-.card__site {
+.test__site {
     width: 117px;
     font-size: 12px;
     font-weight: 400;
@@ -49,7 +49,7 @@
     color: #5C5C5C;
 }
 
-.card__buttons > button {
+.test__buttons > button {
     width: 95px;
     height: 30px;
     border-radius: 10px;

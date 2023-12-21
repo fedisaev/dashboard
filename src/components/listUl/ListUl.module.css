@@ -1,0 +1,45 @@
+.wrapper {
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 13px;
+    letter-spacing: 0;
+    text-align: left;
+    color: #999999;
+}
+
+.wrapper > li > span:hover {
+    cursor: pointer;
+    box-shadow: 0 0 20px 0 #00000026;
+}
+
+.wrapper > li > div > span:hover {
+    cursor: pointer;
+    box-shadow: 0 0 20px 0 #00000026;
+}
+
+.wrapper > li:nth-child(1) {
+    margin-left: 15px;
+    width: 389px;
+}
+
+.wrapper > li:nth-child(2) {
+    width: 100px;
+    margin-left: 40px;
+}
+
+.wrapper > li:nth-child(3) {
+    margin-left: 42px;
+}
+
+.wrapper > li:nth-child(4) {
+    margin-left: 65px;
+}
+
+.wrapper > li:nth-child(2) > img {
+    width: 7px;
+    height: 3.86px;
+    margin-left: 10px;
+    margin-top: 3px;
+}

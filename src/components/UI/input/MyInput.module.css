@@ -1,0 +1,49 @@
+.wrapper {
+    width: 954px;
+    height: 45px;
+    margin-bottom: 30px;
+    margin-top: 40px;
+    border: 1px solid #EBEBEB;
+    border-radius: 5px;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.input {
+    text-align: left;
+    width: 835px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0;
+}
+
+.wrapper > img {
+    width: 13px;
+    height: 14px;
+}
+
+.input::placeholder {
+    color: #D1D1D1;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0;
+    text-align: left;
+}
+
+.wrapper>p{
+   color: #D1D1D1;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0;
+    text-align: right;
+}
+
+

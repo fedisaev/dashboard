@@ -1,36 +1,36 @@
 import React, {FC} from 'react';
-import styles from './CardItem.module.css';
+import styles from './TestItem.module.css';
 import MyButton from "../UI/button/MyButton";
 import {getBorderStyle, getButtonStyle, getButtonText, getStatusStyle, trimUrlPrefix} from "./helpers";
 import {useNavigate} from 'react-router-dom';
-import {CardItemProps} from "../../types/cardItemTypes";
+import {TestItemProps} from "../../types/testItemTypes";
 
-const CardItem: FC<CardItemProps> = ({card, site}) => {
+const TestItem: FC<TestItemProps> = ({test, site}) => {
 
     const trimmedUrl = site ? trimUrlPrefix(site.url) : '';
     const borderStyle = getBorderStyle(trimmedUrl);
-    const statusStyle = getStatusStyle(card.status);
-    const buttonText = getButtonText(card.status);
+    const statusStyle = getStatusStyle(test.status);
+    const buttonText = getButtonText(test.status);
     const buttonStyle = getButtonStyle(buttonText);
 
     const navigate = useNavigate();
 
     const handleButtonClick = () => {
-        navigate(`/${buttonText.toLowerCase()}/${card.id}`);
+        navigate(`/${buttonText.toLowerCase()}/${test.id}`);
     };
 
     return (
-        <div style={borderStyle} className={styles.card}>
-            <div className={styles.card__name}>
-                <p>{card.name}</p>
+        <div style={borderStyle} className={styles.test}>
+            <div className={styles.test__name}>
+                <p>{test.name}</p>
             </div>
-            <div className={styles.card__type}>
-                <p>{card.type}</p>
+            <div className={styles.test__type}>
+                <p>{test.type}</p>
             </div>
-            <div style={{...statusStyle }} className={styles.card__status}>
-                <p>{card.status}</p>
+            <div style={{...statusStyle }} className={styles.test__status}>
+                <p>{test.status}</p>
             </div>
-            <div className={styles.card__site}>
+            <div className={styles.test__site}>
                 <p>{trimmedUrl}</p>
             </div>
             <div onClick={handleButtonClick}>
@@ -40,4 +40,4 @@ const CardItem: FC<CardItemProps> = ({card, site}) => {
     );
 };
 
-export default CardItem;
+export default TestItem;

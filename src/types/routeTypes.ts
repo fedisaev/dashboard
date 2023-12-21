@@ -1,6 +1,6 @@
 import {ComponentType} from "react";
 
-export interface RouteType {
+export interface RouteTypes {
     path: string
     element: ComponentType
 }

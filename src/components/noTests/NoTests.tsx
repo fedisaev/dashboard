@@ -1,9 +1,9 @@
 import React, {FC, MouseEventHandler, useContext} from 'react';
-import styles from './NoCards.module.css';
+import styles from './NoTests.module.css';
 import MyButton from "../UI/button/MyButton";
 import {TestsContext} from "../../context/testsContext";
 
-const NoCards: FC = () => {
+const NoTests: FC = () => {
 
     const {setSearchQuery} = useContext(TestsContext)!;
     const handleResetClick: MouseEventHandler<HTMLButtonElement> = () => {
@@ -20,4 +20,4 @@ const NoCards: FC = () => {
     );
 };
 
-export default NoCards;
+export default NoTests;

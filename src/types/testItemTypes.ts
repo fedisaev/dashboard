@@ -1,6 +1,7 @@
-import {Card, Site} from "./dashboardTypes";
+import {Site, Test} from "./dashboardTypes";
 
-export interface CardItemProps {
-    card: Card
+
+export interface TestItemProps {
+    test: Test
     site: Site | undefined;
 }

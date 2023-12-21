@@ -1,15 +1,11 @@
-import React from 'react';
-import Header from "../components/header/Header";
+import React, {FC} from 'react';
+import TestPages from "../testPages/TestPages";
+import {titleFinalize} from "../../constants/routesConstants";
 
-const Finalize = () => {
+const Results: FC = () => {
     return (
-        <div className='wrapper'>
-            <div className='div'>
-                <Header title={'Finalize'}/>
-                <h2>Spring promotion</h2>
-            </div>
-        </div>
-    );
-};
+        <TestPages title={titleFinalize}/>
+    )
+}
 
-export default Finalize;
+export default Results;

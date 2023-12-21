@@ -1,0 +1,11 @@
+.test__buttons {
+    width: 95px;
+    height: 30px;
+    border-radius: 10px;
+    background: #2EE5AC;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    color: #ffffff;
+}

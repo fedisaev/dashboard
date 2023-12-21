@@ -1,0 +1,20 @@
+.error {
+    margin-top: 50px;
+    color: red;
+    font-size: 25px;
+}
+
+.loading {
+    margin-top: 50px;
+    font-size: 25px;
+}
+
+.div {
+    width: 954px;
+    position: relative;
+}
+
+.div div:last-child {
+    position: absolute;
+    top: 325px;
+}

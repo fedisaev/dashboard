@@ -1,14 +1,14 @@
+import {Test} from "./dashboardTypes";
 import {ReactNode} from "react";
-import {Card} from "./dashboardTypes";
 
 export interface LiItem {
-    value: keyof Card;
+    value: keyof Test;
     content: ReactNode;
     image?: string;
 }
 
-export interface CardListProps {
-    sortedAndSearchedCards: Card[];
+export interface TestListProps {
+    sortedAndSearchedTests: Test[];
 }
 
 export interface Item {
